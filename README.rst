@@ -3,6 +3,7 @@ Chef-install
 
 Chef-install helps you to install Chef cookbooks on your local machine with few steps.
 Currently works on Ubuntu only.
+
 *Note. Behind the scenes chef-install uses ruby and chef-solo*
 
 Install
