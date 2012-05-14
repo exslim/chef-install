@@ -5,7 +5,7 @@ Chef-install helps you to install Chef cookbooks on your local machine with few 
 
 Install
 -------
-    pip install chef-install
+     pip install -e git+https://exslim@github.com/exslim/chef-install.git#egg=chef_install
 
 
 Get some Chef cookbooks
