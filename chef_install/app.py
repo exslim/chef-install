@@ -98,7 +98,15 @@ def main():
     if not os.path.exists(META_DIR):
         logger.warn('Meta directory does not exists')
         os.mkdir(META_DIR)
-        shutil.copy(os.path.join('templates', 'solo.rb'), META_DIR)
+        solo_rb = """root = File.expand_path(File.dirname(__FILE__))
+file_cache_path  "/tmp/chef-solo"
+cookbook_path root + '/cookbooks'
+log_level :info
+log_location STDOUT
+ssl_verify_mode :verify_none
+data_bag_path root + '/data_bags'"""
+        with open(os.path.join(META_DIR, 'solo.rb'), 'w') as f:
+            f.write(solo_rb)
 
     if len(sys.argv[1:]) < 1:
         logger.info("Usage: chef-install cookbook1 [cookbook2, cookbookN]")
