@@ -94,15 +94,15 @@ def main():
     logger.info('OS: %s/%s', dist[0], dist[1])
     _check_dependencies()
 
-    if len(sys.argv[1:]) < 1:
-        logger.info("Usage: chef-install cookbook1 [cookbook2, cookbookN]")
-        sys.exit(1)
-
     # Verify if meta dir exists
     if not os.path.exists(META_DIR):
         logger.warn('Meta directory does not exists')
         os.mkdir(META_DIR)
         shutil.copy(os.path.join('templates', 'solo.rb'), META_DIR)
+
+    if len(sys.argv[1:]) < 1:
+        logger.info("Usage: chef-install cookbook1 [cookbook2, cookbookN]")
+        sys.exit(1)
 
     cookbooks = sys.argv[1:]
     run_template = """{ "run_list": [ %s ]  }"""
